@@ -1,0 +1,248 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.home-cover{
+    /* Apply a linear gradient background */
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #e6e2e1, #000000);
+    /* background-image: url(https://img.freepik.com/premium-photo/stadium-lights-flashes-football-field_99433-1401.jpg?size=626&ext=jpg); */
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+.men{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    padding: 1% 1%;
+
+    /* background-color: #030000; */
+    /* border: 10px solid; */
+}
+.cover-content{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 3%;
+}
+.cover-content h1{
+    font-size: 55px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.cover-content p{
+    font-size: 28px;
+    padding-left: 10%;
+    padding-top: 3%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: left;
+}
+.cover-img{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cover-img img{
+    width: 500px;
+
+}
+.cover-btn{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 2%;
+}
+.cover-btn a{
+    padding:2% 3%;
+    text-decoration: none;
+    color: honeydew;
+    background-color: rgb(114, 7, 7);
+    border-radius: 5px;
+}
+.men a{
+    text-decoration:  none;
+    margin: 0 2%;
+    padding: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: large;
+    color: rgb(1, 0, 0);
+}
+
+.main{
+    background-color: #030000;
+    color: rgb(255, 253, 253);
+    /* padding: 5%; */
+    /* line-height: 40px; */
+    height: 80vh;
+    font-size: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.main h3{
+    padding-bottom: 20px;
+}
+.menu{
+    display: flex;
+    justify-content: right;
+    padding: 1% 1%;
+    width: 100%;
+    background-color: #030000;
+    /* border: 10px solid; */
+}
+.menu a{
+    text-decoration:  none;
+    margin: 0 2%;
+    padding: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: large;
+    color: rgb(254, 253, 253);
+}
+
+.ab{
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10%;
+    align-items: center;
+}
+.ab p{
+    text-align: center;
+    line-height: 50px;
+    font-size: x-large;
+}
+.cover{
+    height: 100vh;
+    background-image: url(../images/cover.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* background-attachment: fixed; */
+}
+.cover h1{
+    color: rgb(2, 1, 1);
+    text-align: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 50px;
+}
+.ft{
+    width: 100%;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0, 0, 0);
+}
+.ft p{
+    color: rgb(232, 221, 221);
+    font-size: larger;
+
+}
+
+.ab-content{
+    width: 80%;
+    margin: 0 15%;
+}
+.ab-content p{
+    font-size: larger;
+}
+
+.game{
+    display: flex;
+    height: 40vh;
+    width: 100%;
+    margin: 8% 0;
+
+}
+.game-image{
+    width: 45%;
+    display: flex;
+    border: 5px solid;
+    border-radius: 50%;
+    justify-content: center;
+}
+.head{
+    width: 100%;
+    font-size: 25px;
+    /* text-align: center; */
+    color: rgb(1, 0, 0);
+    text-decoration: underline;
+   text-underline-offset: 10px;
+   text-decoration-thickness: 4px ;
+     padding-bottom: 5px;
+     margin-bottom: 2%;
+     margin-top: 2%;
+    text-decoration-color: rgb(12, 12, 11);
+ }
+ .game-content{
+    width: 45%;
+    background-color: rgb(255, 255, 255);
+    height: 45vh;
+    display: flex;
+    color: rgb(17, 1, 1);
+    padding: 20px;
+    /* border: 5px dashed; */
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+ }
+ .game-content p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ }
+ .game-content h3{
+    width: 100%;
+    font-size: 30px;
+    /* text-align: center; */
+    color: rgb(13, 12, 5);
+     padding-bottom: 5px;
+     margin-bottom: 2%;
+     margin-top: 2%;
+    text-decoration-color: rgb(12, 12, 11);
+ }
+.ab-c2{
+    background-color: #030000;
+    color: aliceblue;
+    padding: 5%;
+}
+.ab-c22{
+    margin: 2% 0;
+    padding: 1% 2%;
+   
+}
+.ab-c22:hover *{
+    color: black;
+    background-color: aliceblue;
+}
+.ab-c22:hover{
+    color: black;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+.ab-c22 h3{
+    width: 100%;
+    font-size: 25px;
+    /* text-align: center; */
+    color: rgb(239, 239, 239);
+    text-decoration: underline;
+   text-underline-offset: 10px;
+   text-decoration-thickness: 4px ;
+     padding-bottom: 5px;
+     margin-bottom: 2%;
+     margin-top: 2%;
+}
+.ab-c22 h3:hover{
+    color: #030000;
+}
+.ab-c22 p{
+    font-size: larger;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
