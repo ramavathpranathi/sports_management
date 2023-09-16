@@ -11,7 +11,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $result=mysqli_query($con, $sql);
     if ($result){
         $n=mysqli_num_rows($result);
-        if ($n>0){
+        if ($n>0){//if there is same username and passwird it return back
             // echo 'Login Successful';
             $login=1;
            session_start();

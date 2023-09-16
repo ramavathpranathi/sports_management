@@ -10,11 +10,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     // $result=mysqli_query($con, $sql);
 
     
-    $sql = "select * from register where username='$username'";
+    $sql = "select * from register where username='$username'";//checking 
     $result=mysqli_query($con, $sql);
     if ($result){
         $n=mysqli_num_rows($result);
-        if ($n>0){
+        if ($n>0){//n=how many users name with same user name 
             echo 'Already account exists';
         }
         else{
@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             echo "Data Inserted";
         }
         else{
-            die(mysqli_error($con));
+            die(mysqli_error($con));//showing where the error is
         } 
         }
     }
