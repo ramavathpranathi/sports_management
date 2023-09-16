@@ -25,7 +25,7 @@ if(!isset($_SESSION['username'])){
 
         <a href="./home.php">Home</a>
         <a href="./events.php">Events</a>
-        <a href="#">Registration</a>
+        <a href="./registration.php">Registration</a>
         <a href="./profile.php">Profile</a>
         <a href="./about.php">About Us</a>
         <a class="logout" href="./logout.php"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
