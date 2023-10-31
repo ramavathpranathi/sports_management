@@ -5,7 +5,7 @@ if(!isset($_SESSION['username'])){
 }
 if ($_SESSION['role'] !== 'student') {
     // If the user is not an admin, redirect them to a restricted access page or show an error message
-    header('location:../index.html'); // Replace 'restricted.php' with the appropriate page
+    header('location:login.html'); // Replace 'restricted.php' with the appropriate page
     exit();
 }
 

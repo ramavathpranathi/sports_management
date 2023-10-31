@@ -1,7 +1,7 @@
 <?php
- if(isset($_SESSION['username'])){
-    header('location:home.php');
-}
+//  if(isset($_SESSION['username'])){
+//     header('location:home.php');
+// }
  if($_SERVER['REQUEST_METHOD'] == 'POST'){
     include 'connect.php';
 
@@ -13,7 +13,7 @@
     $result=mysqli_query($con, $sql);
     if ($result){
         $n=mysqli_num_rows($result);
-        if ($n>0){
+        if ($n>0){ //checking the user exisits
              echo 'Login Successful';
            session_start();
            $_SESSION['username']=$username;

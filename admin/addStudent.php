@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $DOB=$_POST['DateOfBirth'];
     $email=$_POST['Email'];
     $phone=$_POST['Phone'];
-    $CID=$_POST['ClubID'];
 
     $sql = "select * from students where studentID='$SID'";
     $result=mysqli_query($con, $sql);
@@ -30,8 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
         else{
         $sql = "insert into students(StudentID, FirstName, LastName, DateOfBirth, Email, Phone, PasswordHash) values('$SID', '$fName', '$lName', '$DOB' ,'$email', '$phone', '$password')";
-        $result=mysqli_query($con, $sql);
-        $sql="insert into studentclubrelationship(StudentID, ClubID) values($SID, $CID)";
         $result=mysqli_query($con, $sql);
         if($result){
             // echo "Data Inserted";
@@ -84,22 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             <label>Date of Birth</label>
             <input type="text" pattern="\d{4}-\d{2}-\d{2}" placeholder="yyyy-mm-dd" name="DateOfBirth" required />
           </div>
-          <div class="input-box">
-            <label>Club ID</label><br>
-        
-            <select name="ClubID">
-      
-        <?php
-        $sql='select * from clubs';
-        $result=mysqli_query($con, $sql);
-
-        while ($row=mysqli_fetch_assoc($result)){
-          $id=$row['ClubID'];
-          echo '<option value=" ">'.$id.'</option>';
-        }
-        ?>
-          </select>
-          </div>
+          
         </div>
         <div class="column">
           <div class="input-box">
