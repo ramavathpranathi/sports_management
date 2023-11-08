@@ -59,56 +59,49 @@ if ($_SESSION['role'] !== 'admin') {
         <li class="nav-item">
           <a class="nav-link" href="./logout.php">Logout</a>
         </li>
-       
       </ul>
-      
     </div>
   </div>
 </nav>
 <div class="container">
-<button type="button" class="btn btn-primary mt-5 ml-2"><a class="text-light" href="./addsportsevents.php"> Add Event</a> </button>
+<button type="button" class="btn btn-primary mt-5 ml-2"><a class="text-light" href="./addsport.php"> Add Sport</a> </button>
 </div>
 <table class="table container table-bordered table-hover mt-3">
   <thead>
     <tr>
       <th scope="col">#ID</th>
-      <th scope="col">Event Name</th>
-      <th scope="col">Event Date</th>
-      <th scope="col">Venue</th>
+      <th scope="col">Sport Name</th>
       <th scope="col">Discription</th>
-      <th scope="col">Club</th>
+      <th scope="col">Coordinator</th>
       <th scope="col">Operations</th>
     </tr>
   </thead>
   <tbody>
     <?php
-    $sql1="select * from sportsevents";
+    $sql1="select * from Sports";
     $result=mysqli_query($con, $sql1);
     if ($result){
     while($row=mysqli_fetch_assoc($result)){
-        $EID=$row["EventID"];
-        $EName=$row['EventName'];
-        $Edesc=$row['EventDate'];
-        $quantity=$row['Location'];
+        $EID=$row["SportID"];
+        $EName=$row['SportName'];
         $Aquantity=$row['Description'];
-        $CID=$row['ClubID'];
-        $sql2='select ClubName from CLubs where ClubID='.$CID.'';
+        $CID=$row['SportCordinator'];
+        $sql2='select FirstName from students where StudentID='.$CID.'';
         $r=mysqli_query($con, $sql2);
         $row2=mysqli_fetch_assoc($r);
-        $CName=$row2['ClubName'];
-        $table='sportsevents';
-        $on='EventID';
+        $CName=$row2['FirstName'];
+        $table='sports';
+        $on='SportID';
 
         echo '
         <tr>
         <th>'.$EID.'</th>
         <td>'.$EName.'</td>
-        <td>'.$Edesc.'</td>
-        <td>'.$quantity.'</td>
+
         <td>'.$Aquantity.'</td>
         <td><strong>'.$CID.':</strong> '.$CName.'</td>
         <td>
-        <button type="button" class="btn btn-primary w-10"><a class="text-light" href="./updatesportsevents.php?updateID='.$EID.'">Edit</a> </button>
+        <button type="button" class="btn btn-primary w-10"><a class="text-light" href="./updatesports.php?updateID='.$EID.'">Edit</a> </button>
         <button type="button" class="btn btn-danger"><a class="text-light" href="./deleteadmin.php?delID='.$EID.'&table='.$table.'&on='.$on.'">Delete</a> </button>
 
         </td>

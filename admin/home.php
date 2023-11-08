@@ -44,6 +44,9 @@ if ($_SESSION['role'] !== 'admin') {
           <a class="nav-link" href="./clubleaders.php">Club Leaders</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link active" href="./sports.php">Sports</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link active" href="./sportsEquipment.php">Sports Equipment</a>
         </li>
         <li class="nav-item">
