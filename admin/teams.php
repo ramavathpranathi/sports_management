@@ -72,43 +72,49 @@ if ($_SESSION['role'] !== 'admin') {
   <thead>
     <tr>
       <th scope="col">#ID</th>
-      <th scope="col">Event Name</th>
-      <th scope="col">Event Date</th>
-      <th scope="col">Venue</th>
-      <th scope="col">Discription</th>
-      <th scope="col">Club</th>
+      <th scope="col">Team Name</th>
+      <th scope="col">Captain</th>
+      <th scope="col">Event name</th>
+      <th scope="col">Game</th>
       <th scope="col">Operations</th>
     </tr>
   </thead>
   <tbody>
     <?php
-    $sql1="select * from sportsevents";
+    $sql1="select * from teams";
     $result=mysqli_query($con, $sql1);
     if ($result){
     while($row=mysqli_fetch_assoc($result)){
-        $EID=$row["EventID"];
-        $EName=$row['EventName'];
-        $Edesc=$row['EventDate'];
-        $quantity=$row['Location'];
-        $Aquantity=$row['Description'];
-        $CID=$row['ClubID'];
-        $sql2='select ClubName from CLubs where ClubID='.$CID.'';
+        $TID=$row["TeamID"];
+        $TName=$row['TeamName'];
+        $CID=$row['CaptainID'];
+        $EID=$row['EventID'];
+        $SID=$row['SportID'];
+        $sql2='select FirstName from Students where StudentID='.$CID.'';
         $r=mysqli_query($con, $sql2);
         $row2=mysqli_fetch_assoc($r);
-        $CName=$row2['ClubName'];
-        $table='sportsevents';
-        $on='EventID';
+        $CName=$row2['FirstName'];
+        $sql2='select EventName from SportsEvents where EventID='.$EID.'';
+        $r=mysqli_query($con, $sql2);
+        $row2=mysqli_fetch_assoc($r);
+        $ENAME=$row2['EventName'];
+        $sql2='select SportName from Sports where SportID='.$SID.'';
+        $r=mysqli_query($con, $sql2);
+        $row2=mysqli_fetch_assoc($r);
+        $SName=$row2['FirstName'];
+        $table='Teams';
+        $on='TeamsID';
 
         echo '
         <tr>
-        <th>'.$EID.'</th>
-        <td>'.$EName.'</td>
-        <td>'.$Edesc.'</td>
-        <td>'.$quantity.'</td>
-        <td>'.$Aquantity.'</td>
+        <th>'.$TID.'</th>
+        <td>'.$TName.'</td>
         <td><strong>'.$CID.':</strong> '.$CName.'</td>
+        <td><strong>'.$EID.':</strong> '.$EName.'</td>
+        <td><strong>'.$SID.':</strong> '.$SName.'</td>
+        
+       
         <td>
-        <button type="button" class="btn btn-secondary"><a class="text-light" href="./teams.php">Teams</a> </button>
         <button type="button" class="btn btn-primary w-10"><a class="text-light" href="./updatesportsevents.php?updateID='.$EID.'">Edit</a> </button>
         <button type="button" class="btn btn-danger"><a class="text-light" href="./deleteadmin.php?delID='.$EID.'&table='.$table.'&on='.$on.'">Delete</a> </button>
 
