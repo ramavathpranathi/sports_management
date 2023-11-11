@@ -44,7 +44,7 @@ if ($_SESSION['role'] !== 'admin') {
           <a class="nav-link" href="./clubleaders.php">Club Leaders</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="./sports.php">Sports</a>
+          <a class="nav-link" href="./sports.php">Sports</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="./sportsEquipment.php">Sports Equipment</a>
@@ -64,7 +64,7 @@ if ($_SESSION['role'] !== 'admin') {
       
     </div>
   </div>
-</nav>
+</nav> 
 <div class="container">
 <button type="button" class="btn btn-primary mt-5 ml-2"><a class="text-light" href="./addsportsevents.php"> Add Event</a> </button>
 </div>
@@ -108,7 +108,7 @@ if ($_SESSION['role'] !== 'admin') {
         <td>'.$Aquantity.'</td>
         <td><strong>'.$CID.':</strong> '.$CName.'</td>
         <td>
-        <button type="button" class="btn btn-secondary"><a class="text-light" href="./teams.php">Teams</a> </button>
+        <button type="button" class="btn btn-primary"><a class="text-light" href="./teams.php?updateID='.$EID.'">Teams</a> </button>
         <button type="button" class="btn btn-primary w-10"><a class="text-light" href="./updatesportsevents.php?updateID='.$EID.'">Edit</a> </button>
         <button type="button" class="btn btn-danger"><a class="text-light" href="./deleteadmin.php?delID='.$EID.'&table='.$table.'&on='.$on.'">Delete</a> </button>
 

@@ -4,6 +4,8 @@ session_start();
 if(!isset($_SESSION['username'])){
     header('location:login.php');
 }
+$EID=$_GET['updateID'];
+
 
 if ($_SESSION['role'] !== 'admin') {
     // If the user is not an admin, redirect them to a restricted access page or show an error message
@@ -66,7 +68,10 @@ if ($_SESSION['role'] !== 'admin') {
   </div>
 </nav>
 <div class="container">
-<button type="button" class="btn btn-primary mt-5 ml-2"><a class="text-light" href="./addsportsevents.php"> Add Event</a> </button>
+    <?php
+    echo'
+<button type="button" class="btn btn-primary mt-5 ml-2"><a class="text-light" href="./addteam.php?updateID='.$EID.'"> Add Team</a> </button>'
+?>
 </div>
 <table class="table container table-bordered table-hover mt-3">
   <thead>
@@ -81,11 +86,11 @@ if ($_SESSION['role'] !== 'admin') {
   </thead>
   <tbody>
     <?php
-    $sql1="select * from teams";
+    $sql1="select * from teams where EventID=$EID";
     $result=mysqli_query($con, $sql1);
     if ($result){
     while($row=mysqli_fetch_assoc($result)){
-        $TID=$row["TeamID"];
+        $TID=$row["Team_ID"];
         $TName=$row['TeamName'];
         $CID=$row['CaptainID'];
         $EID=$row['EventID'];
@@ -94,16 +99,16 @@ if ($_SESSION['role'] !== 'admin') {
         $r=mysqli_query($con, $sql2);
         $row2=mysqli_fetch_assoc($r);
         $CName=$row2['FirstName'];
-        $sql2='select EventName from SportsEvents where EventID='.$EID.'';
-        $r=mysqli_query($con, $sql2);
-        $row2=mysqli_fetch_assoc($r);
-        $ENAME=$row2['EventName'];
-        $sql2='select SportName from Sports where SportID='.$SID.'';
-        $r=mysqli_query($con, $sql2);
-        $row2=mysqli_fetch_assoc($r);
-        $SName=$row2['FirstName'];
-        $table='Teams';
-        $on='TeamsID';
+        $sql3='select EventName from SportsEvents where EventID='.$EID.'';
+        $r3=mysqli_query($con, $sql3);
+        $row3=mysqli_fetch_assoc($r3);
+        $EName=$row3['EventName'];
+        $sql4='select SportName from Sports where SportID='.$SID.'';
+        $r4=mysqli_query($con, $sql4);
+        $row4=mysqli_fetch_assoc($r4);
+        $SName=$row4['SportName'];
+        $table="Teams";
+        $on='Team_ID';
 
         echo '
         <tr>
@@ -113,10 +118,9 @@ if ($_SESSION['role'] !== 'admin') {
         <td><strong>'.$EID.':</strong> '.$EName.'</td>
         <td><strong>'.$SID.':</strong> '.$SName.'</td>
         
-       
         <td>
         <button type="button" class="btn btn-primary w-10"><a class="text-light" href="./updatesportsevents.php?updateID='.$EID.'">Edit</a> </button>
-        <button type="button" class="btn btn-danger"><a class="text-light" href="./deleteadmin.php?delID='.$EID.'&table='.$table.'&on='.$on.'">Delete</a> </button>
+        <button type="button" class="btn btn-danger"><a class="text-light" href="./deleteTeam.php?delID='.$TID.'&table='.$table.'&on='.$on.'">Delete</a> </button>
 
         </td>
       </tr>
