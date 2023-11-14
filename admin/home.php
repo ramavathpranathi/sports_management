@@ -52,6 +52,9 @@ if ($_SESSION['role'] !== 'admin') {
         <li class="nav-item">
           <a class="nav-link active" href="./sportsevents.php">Sports Events</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="./sportsEquipment.php">Winner</a>
+        </li>
         <!-- <li class="nav-item">
           <a class="nav-link active" href="./sportsevents.php">Registrations</a>
         </li> -->

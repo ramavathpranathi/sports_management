@@ -95,18 +95,22 @@ if ($_SESSION['role'] !== 'admin') {
         $CID=$row['CaptainID'];
         $EID=$row['EventID'];
         $SID=$row['SportID'];
+        
         $sql2='select FirstName from Students where StudentID='.$CID.'';
         $r=mysqli_query($con, $sql2);
         $row2=mysqli_fetch_assoc($r);
         $CName=$row2['FirstName'];
+
         $sql3='select EventName from SportsEvents where EventID='.$EID.'';
         $r3=mysqli_query($con, $sql3);
         $row3=mysqli_fetch_assoc($r3);
         $EName=$row3['EventName'];
+
         $sql4='select SportName from Sports where SportID='.$SID.'';
         $r4=mysqli_query($con, $sql4);
         $row4=mysqli_fetch_assoc($r4);
         $SName=$row4['SportName'];
+
         $table="Teams";
         $on='Team_ID';
 
