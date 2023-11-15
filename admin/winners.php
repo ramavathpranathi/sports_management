@@ -23,7 +23,7 @@ if ($_SESSION['role'] !== 'admin') {
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous">
 
-    <title>Winners</title>
+    <title>Winner</title>
 </head>
 
 <body>
@@ -41,7 +41,22 @@ if ($_SESSION['role'] !== 'admin') {
                         <a class="nav-link active" href="./students.php">Students</a>
                     </li>
                     <!-- ... other menu items ... -->
-
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./winners.php">club</a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="nav-link" href="./clubleaders.php">Club Leaders</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="./sports.php">Sports</a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="nav-link active" href="./sportsEquipment.php">Sports Equipment</a>
+                    </li>
+                   <li class="nav-item">
+                       <a class="nav-link active" href="./sportsevents.php">Sports Events</a>
+                   </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link active" href="./winners.php">Winners</a>
                     </li>
