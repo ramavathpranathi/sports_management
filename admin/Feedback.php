@@ -23,7 +23,7 @@ if ($_SESSION['role'] !== 'admin') {
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous">
 
-    <title>Winner</title>
+    <title>Feedback</title>
 </head>
 
 <body>
@@ -79,52 +79,48 @@ if ($_SESSION['role'] !== 'admin') {
             </div>
         </div>
     </nav>
-    <div class="container">
+    <!-- <div class="container">
         <button type="button" class="btn btn-primary mt-5 ml-2"><a class="text-light"
                 href="./addwinner.php"> Add Winner</a> </button>
-    </div>
+    </div> -->
     <table class="table container table-bordered table-hover mt-3">
         <thead>
             <tr>
-                <th scope="col">#ID</th>
-                <th scope="col">Team_ID</th>
-                <th scope="col">Team Name</th>
-                <th scope="col">CaptainID</th>
-                <th scope="col">points</th>
-                <th scope="col">EventID</th>
-                <th scope="col">Operations</th>
+                <th scope="col">StudentID</th>
+                <th scope="col">Name</th>
+                <th scope="col">ClubID</th>
+                <th scope="col">SportsID</th>
+                <th scope="col">Feedback</th>
+                <!-- <th scope="col">Operations</th> -->
             </tr>
         </thead>
         <tbody>
             <?php
-            $sql1 = "SELECT * FROM winner";
+            $sql1 = "SELECT * FROM Feedback";
             $result = mysqli_query($con, $sql1);
             if ($result) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $WID = $row["winner_ID"];
-                    $TID = $row["Team_ID"];
-                    $TName=$row["TeamName"];
-                    $CID = $row["CaptainID"];
-                    $PName = $row["points"];
-                    $EID = $row["EventID"];
-                    $table="winners";
-                    $on='winner_ID';
+                    $SID = $row["StudentID"];
+                    $fName=$row["Name"];
+                    $CID = $row["ClubID"];
+                    $GID = $row["SportsID"];
+                    $FID = $row["Feedback"];
+                   $table="Feedback";
+                    $on='SID';
                    
 
                     // Fetch data related to Team, Captain, and Event using JOIN or separate queries
 
                     echo '
                     <tr>
-                        <th>' . $WID . '</th>
-                        <td>' . $TID . '</td>
-                        <td>' . $TName . '</td>
+                        <th>' . $SID . '</th>
+                        <td>' . $fName . '</td>
                         <td>' . $CID . '</td>
-                        <td>' . $PName . '</td>
-                        <td>' . $EID . '</td>
+                        <td>' . $GID . '</td>
+                        <td>' . $FID . '</td>
                         <td>
-                            <button type="button" class="btn btn-primary"><a class="text-light" href="./updatewinner.php?updateID=' . $WID . '">Update</a> </button>
-                            <button type="button" class="btn btn-danger"><a class="text-light" href="./deletewinner.php?delID=' . $WID . '&table=winner&on=Winner_ID">Delete</a> </button>
-                        </td>
+                        <button type="button" class="btn btn-danger"><a class="text-light" href="./deletefeedback.php?delID='.$SID.'&table='.$table.'&on='.$on.'">Completed</a> </button>
+                            </td>   
                     </tr>
                     ';
                 }

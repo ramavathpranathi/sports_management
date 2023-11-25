@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 <html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
-        <title>Registration Form</title>
+        <title>ScheduleDetails</title>
         <link rel="stylesheet" href="../css/pranu.css">
         <meta name="viewport"content="width=device,initial-scale=1.0">
 
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <body>
     <div class="container">
-        <div class="title">Registration</div>
+        <div class="title">ScheduleDetails</div>
         <form action="registration.php" method="post">
             <div class="user-details">
 

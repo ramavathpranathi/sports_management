@@ -17,11 +17,11 @@ if (isset($_GET['delID'])) {
     $table = $_GET['table'];
     $on = $_GET['on'];
 
-    // Additional check to prevent SQL injection by validating $table against a predefined list of tables
-    $allowedTables = array('Winner', 'OtherTable1', 'OtherTable2'); // Add other tables as needed
-    if (!in_array($table, $allowedTables)) {
-        die('Invalid table specified');
-    }
+    // // Additional check to prevent SQL injection by validating $table against a predefined list of tables
+    // $allowedTables = array('Winner', 'OtherTable1', 'OtherTable2'); // Add other tables as needed
+    // if (!in_array($table, $allowedTables)) {
+    //     die('Invalid table specified');
+    // }
 
     $sql = "DELETE FROM $table WHERE $on=$id";
     $result = mysqli_query($con, $sql);
@@ -32,7 +32,7 @@ if (isset($_GET['delID'])) {
         die(mysqli_error($con));
     }
 }
-
+header('location:winners.php');
 // Remove the redundant header() line
 // header('location:SportsEvents.php');
 ?>

@@ -10,25 +10,25 @@ if ($_SESSION['role'] !== 'admin') {
 }
 
 $winnerID = $_GET['updateID'];
-$sql = "SELECT * FROM Winner WHERE WinnerID=$winnerID";
+$sql = "SELECT * FROM winner WHERE winner_ID=$winnerID";
 $result = mysqli_query($con, $sql);
 $row = mysqli_fetch_assoc($result);
 
-$teamID = $row['TeamID'];
+$teamID = $row['Team_ID'];
 $teamName = $row['TeamName'];
 $captainID = $row['CaptainID'];
-$points = $row['Points'];
+$points = $row['points'];
 $eventID = $row['EventID'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $teamID = $_POST['TeamID'];
+    // $teamID = $_POST['Team_ID'];
     $teamName = $_POST['TeamName'];
     $captainID = $_POST['CaptainID'];
-    $points = $_POST['Points'];
+    // $points = $_POST['points'];
     $eventID = $_POST['EventID'];
 
-    $sql = "UPDATE Winner SET TeamID='$teamID', TeamName='$teamName', CaptainID=$captainID, Points=$points, EventID=$eventID WHERE WinnerID=$winnerID";
+    $sql = "UPDATE winner SET Team_ID='$teamID', TeamName='$teamName', CaptainID=$captainID, points=$points, EventID=$eventID WHERE winner_ID=$winnerID";
     $result = mysqli_query($con, $sql);
 
     if ($result) {

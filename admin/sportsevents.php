@@ -53,8 +53,14 @@ if ($_SESSION['role'] !== 'admin') {
           <a class="nav-link active" href="./sportsevents.php">Sports Events</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="./sportsEquipment.php">Winner</a>
+          <a class="nav-link active" href="./request.php">Request</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="./winners.php">Winners</a>
+        </li>
+        <li class="nav-item">
+                        <a class="nav-link active" href="./Feedback.php">Feedback</a>
+                    </li>
         <li class="nav-item">
           <a class="nav-link active" href="./admins.php">Admins</a>
         </li>

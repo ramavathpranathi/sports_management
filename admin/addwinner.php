@@ -11,7 +11,7 @@ if ($_SESSION['role'] !== 'admin') {
     exit();
 }
 
-$EID=$_GET['updateID'];
+// $EID=$_GET['updateID'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     
@@ -19,7 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $TID = $_POST['Team_ID'];
     $TName = $_POST['TeamName'];
     $CID = $_POST['CaptainID'];
-    $SID = $_POST['SportID'];
+    $EID=$_POST['EventID'];
+ 
    
     $sql = "SELECT * FROM winner WHERE winner_ID='$WID'";
     $result = mysqli_query($con, $sql);
@@ -34,11 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $result = mysqli_query($con, $sql);
 
             if ($result) {
-                // echo "Data Inserted";
+                echo "Data Inserted";
                 header("location:winners.php"); // Change this to the appropriate page
             } else {
                 die(mysqli_error($con));
-                // echo "Error";
+                echo "Error";
             } 
         }
     } else {
@@ -75,6 +76,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     <label>Team Name</label>
                     <input type="text" placeholder="Enter Team Name" name="TeamName" required />
                 </div>
+                <div class="input-box">
+                    <label>Event ID</label>
+                    <input type="text" placeholder="Enter Event ID" name="EventID" required />
+                </div>
+
             </div>
             <div class="input-box">
                 <label>Captain ID</label>

@@ -7,35 +7,27 @@ if(!isset($_SESSION['username'])){
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
   include 'connect.php';
+
   
   $SID=$_POST['StudentID'];
-  echo 'try '. $_POST['StudentID'];
- // $password=$_POST['PasswordHash'];
-  $fName=$_POST['FirstName'];
-  $lName=$_POST['LastName'];
-  $DOB=$_POST['DateOfBirth'];
-  $email=$_POST['Email'];
-  $phone=$_POST['Phone'];
+  $Name=$_POST['Name'];
+  $ITID=$_POST['Item'];
+  $QID=$_POST['Quantity'];
   $CID=$_POST['clubID'];
 
-  $sql = "select * from register where studentID='$SID'";
+  $sql = "select * from request ";
   $result=mysqli_query($con, $sql);
   if ($result){
       $n=mysqli_num_rows($result);
-      if ($n>0){
-          echo 'Already account exists';
-      }
-      else{
-      $sql = "insert into register(StudentID, FirstName, LastName, DateOfBirth, Email, Phone,clubID) values('$SID', '$fName', '$lName', '$DOB' ,'$email', '$phone', '$CID')";
+      $sql = "insert into request(StudentID, Name, Item, Quantity, clubID) values( '$SID', '$Name', '$ITID' ,'$QID',  '$CID')";
       $result=mysqli_query($con, $sql);
       if($result){
           // echo "Data Inserted";
-          header('location:registration.php');
+          header('location:request.php');
       }
       else{
           die(mysqli_error($con));
       } 
-      }
   }
 
 }
@@ -45,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 <html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
-        <title>Registration Form</title>
+        <title>Request Form</title>
         <link rel="stylesheet" href="../css/pranu.css">
         <meta name="viewport"content="width=device,initial-scale=1.0">
 
@@ -53,8 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <body>
     <div class="container">
-        <div class="title">Registration</div>
-        <form action="registration.php" method="post">
+        <div class="title">Request</div>
+        <form action="request.php" method="post">
             <div class="user-details">
 
             <div class="input-box">
@@ -62,30 +54,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                   <input type="text" placeholder="Enter your id"name="StudentID"required>  
                 </div> 
                 <div class="input-box">
-                  <spam class="details">First Name</spam>
-                  <input type="text" placeholder="Enter your name"name="FirstName"required>  
+                  <spam class="details">Name</spam>
+                  <input type="text" placeholder="Enter your name"name="Name"required>  
                 </div>
                 
-                  <div class="input-box">
+                  <!-- <div class="input-box">
                     <spam class="details">LastName</spam>
                     <input type="text" placeholder="Enter your last name" name="LastName" required>  
-                  </div>
-                  <div class="input-box">
+                  </div> -->
+                  <!-- <div class="input-box">
                     <spam class="details">DateOfBirth</spam>
                     <input type="text" pattern="\d{4}-\d{2}-\d{2}" placeholder="yyyy-mm-dd" name="DateOfBirth" required />
-                  </div>
+                  </div> -->
                   
                   <!-- <div class="input-box">
                     <spam class="details">Batch</spam>
                     <input type="text" placeholder="Enter your batch"required>  
                   </div> -->
-                  <div class="input-box">
+                  <!-- <div class="input-box">
                     <spam class="details">Email</spam>
                     <input type="text" placeholder="Enter your Email"name="Email"required>  
+                  </div> -->
+                  <div class="input-box">
+                    <spam class="details">Item required</spam>
+                    <input type="text" placeholder="Item required " name="Item required"required>  
                   </div>
                   <div class="input-box">
-                    <spam class="details">Phone</spam>
-                    <input type="text" placeholder="phone number " name="Phone"required>  
+                    <spam class="details">Quantity</spam>
+                    <input type="text" placeholder="Quantity" name="Quantity09"required>  
                   </div>
                   <div class="input-box">
                     <spam class="details">ClubID</spam>
