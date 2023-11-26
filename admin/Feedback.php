@@ -91,6 +91,7 @@ if ($_SESSION['role'] !== 'admin') {
                 <th scope="col">ClubID</th>
                 <th scope="col">SportsID</th>
                 <th scope="col">Feedback</th>
+                <th scope="col">Operations</th>
                 <!-- <th scope="col">Operations</th> -->
             </tr>
         </thead>
