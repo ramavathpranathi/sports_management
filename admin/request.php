@@ -51,6 +51,9 @@ if ($_SESSION['role'] !== 'admin') {
           <a class="nav-link active" href="./sportsevents.php">Sports Events</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link active" href="./schedule.php">schedule</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link active" href="./request.php">Request</a>
         </li>
         <li class="nav-item">
@@ -99,7 +102,7 @@ if ($_SESSION['role'] !== 'admin') {
             $Name=$row['Name'];
             $ITID=$row['Item'];
             $QID=$row['Quantity'];
-            $CID=$row['clubID'];
+            $CID=$row['ClubID'];
 
             $table="request";
             $on='StudentID';

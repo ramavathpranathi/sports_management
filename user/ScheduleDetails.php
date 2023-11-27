@@ -8,17 +8,21 @@ if(!isset($_SESSION['username'])){
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
   include 'connect.php';
   
-  $SID=$_POST['StudentID'];
-  echo 'try '. $_POST['StudentID'];
- // $password=$_POST['PasswordHash'];
-  $fName=$_POST['FirstName'];
-  $lName=$_POST['LastName'];
-  $DOB=$_POST['DateOfBirth'];
-  $email=$_POST['Email'];
-  $phone=$_POST['Phone'];
-  $CID=$_POST['clubID'];
+//   $SID=$_POST['StudentID'];
+//   echo 'try '. $_POST['StudentID'];
+//  // $password=$_POST['PasswordHash'];
+//   $fName=$_POST['FirstName'];
+//   $lName=$_POST['LastName'];
+//   $DOB=$_POST['DateOfBirth'];
+//   $email=$_POST['Email'];
+//   $phone=$_POST['Phone'];
+//   $CID=$_POST['clubID'];
+     $SID=$_POST['SportsID'];
+     $EID=$_POST['EventID'];
+     $T1=$_POST['Team1'];
+     $T2=$_POST['Team2'];
 
-  $sql = "select * from register where studentID='$SID'";
+  $sql = "select * from search where SportsID='$SID'";
   $result=mysqli_query($con, $sql);
   if ($result){
       $n=mysqli_num_rows($result);
@@ -26,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
           echo 'Already account exists';
       }
       else{
-      $sql = "insert into register(StudentID, FirstName, LastName, DateOfBirth, Email, Phone,clubID) values('$SID', '$fName', '$lName', '$DOB' ,'$email', '$phone', '$CID')";
+      $sql = "insert into Search(SportsID, EventID, Team1, Team2) values('$SID', '$EID', '$T1', '$T2')";
       $result=mysqli_query($con, $sql);
       if($result){
           // echo "Data Inserted";
@@ -58,28 +62,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             <div class="user-details">
 
             <div class="input-box">
-                  <spam class="details">StudentID</spam>
+                  <spam class="details">SportsID</spam>
                   <input type="text" placeholder="Enter your id"name="StudentID"required>  
                 </div> 
                 <div class="input-box">
-                  <spam class="details">First Name</spam>
-                  <input type="text" placeholder="Enter your name"name="FirstName"required>  
+                    <spam class="details">EventID</spam>
+                    <input type="text" placeholder="Enter your EventID"name='EventID'required>  
+                  </div> 
+                <div class="input-box">
+                  <spam class="details">Team 1</spam>
+                  <input type="text" placeholder="Enter your first team  name"name="Team 1"required>  
                 </div>
                 
                   <div class="input-box">
-                    <spam class="details">LastName</spam>
-                    <input type="text" placeholder="Enter your last name" name="LastName" required>  
+                    <spam class="details">Team 2</spam>
+                    <input type="text" placeholder="Enter your secound team name" name="Team 2" required>  
                   </div>
                   <div class="input-box">
+                    <spam class="details">ScheduleDetails</spam>
+                    <input type="text" placeholder=""required>  
+                  </div>
+                  <!-- <div class="input-box">
                     <spam class="details">DateOfBirth</spam>
                     <input type="text" pattern="\d{4}-\d{2}-\d{2}" placeholder="yyyy-mm-dd" name="DateOfBirth" required />
-                  </div>
+                  </div> -->
                   
                   <!-- <div class="input-box">
                     <spam class="details">Batch</spam>
                     <input type="text" placeholder="Enter your batch"required>  
                   </div> -->
-                  <div class="input-box">
+                  <!-- <div class="input-box">
                     <spam class="details">Email</spam>
                     <input type="text" placeholder="Enter your Email"name="Email"required>  
                   </div>
@@ -90,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                   <div class="input-box">
                     <spam class="details">ClubID</spam>
                     <input type="text" placeholder="Club id " name='clubID'required>  
-                  </div>
+                  </div> -->
                   <!-- <div class="button">
                     <input type="submit" value="Register" >
                   </div> -->

@@ -4,8 +4,6 @@ session_start();
 if(!isset($_SESSION['username'])){
     header('location:login.php');
 }
-$EID=$_GET['updateID'];
-
 
 if ($_SESSION['role'] !== 'admin') {
     // If the user is not an admin, redirect them to a restricted access page or show an error message
@@ -23,7 +21,7 @@ if ($_SESSION['role'] !== 'admin') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <title>Sports Events</title>
+    <title>Schedule</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -37,7 +35,7 @@ if ($_SESSION['role'] !== 'admin') {
         </li>
        
         <li class="nav-item">
-          <a class="nav-link active" href="./students.php">Students</a>
+          <a class="nav-link active" href="./Students.php">Students</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./clubs.php">Clubs</a>
@@ -61,11 +59,12 @@ if ($_SESSION['role'] !== 'admin') {
           <a class="nav-link active" href="./request.php">Request</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="./winners.php">winners</a>
+          <a class="nav-link active" href="./winners.php">Winners</a>
         </li>
         <li class="nav-item">
-                    <a class="nav-link active" href="./Feedback.php">Feedback</a>
-                    </li>
+         <a class="nav-link active" href="./Feedback.php">Feedback</a>
+         </li>
+         
         <li class="nav-item">
           <a class="nav-link active" href="./admins.php">Admins</a>
         </li>
@@ -73,70 +72,53 @@ if ($_SESSION['role'] !== 'admin') {
         <li class="nav-item">
           <a class="nav-link" href="./logout.php">Logout</a>
         </li>
-       
       </ul>
-      
     </div>
   </div>
 </nav>
 <div class="container">
-    <?php
-    echo'
-<button type="button" class="btn btn-primary mt-5 ml-2"><a class="text-light" href="./addteam.php?updateID='.$EID.'"> Add Team</a> </button>'
-?>
+<button type="button" class="btn btn-primary mt-5 ml-2"><a class="text-light" href="./addsport.php"> Add Schedule</a> </button>
 </div>
 <table class="table container table-bordered table-hover mt-3">
   <thead>
     <tr>
-      <th scope="col">#ID</th>
-      <th scope="col">Team Name</th>
-      <th scope="col">Captain</th>
-      <th scope="col">Event name</th>
-      <th scope="col">Game</th>
-      <th scope="col">Operations</th>
+      <th scope="col">SportID</th>
+      <th scope="col">TeamID</th>
+      <th scope="col">Venue</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Operation</th>
     </tr>
   </thead>
   <tbody>
     <?php
-    $sql1="select * from teams where EventID=$EID";
+    $sql1="select * from schedule";
     $result=mysqli_query($con, $sql1);
     if ($result){
     while($row=mysqli_fetch_assoc($result)){
-        $TID=$row["Team_ID"];
-        $TName=$row['TeamName'];
-        $CID=$row['CaptainID'];
-        $EID=$row['EventID'];
-        $SID=$row['SportID'];
-        
-        $sql2='select FirstName from Students where StudentID='.$CID.'';
+        $SID=$row["SportID"];
+        $TID=$row['TeamID'];
+        $VID=$row['Venue'];
+        $DID=$row['Date'];
+        $TTID=$row['Time'];
+
+        $sql2='select SportID from sports where SportID='.$SID.'';
         $r=mysqli_query($con, $sql2);
         $row2=mysqli_fetch_assoc($r);
-        $CName=$row2['FirstName'];
-
-        $sql3='select EventName from SportsEvents where EventID='.$EID.'';
-        $r3=mysqli_query($con, $sql3);
-        $row3=mysqli_fetch_assoc($r3);
-        $EName=$row3['EventName'];
-
-        $sql4='select SportName from Sports where SportID='.$SID.'';
-        $r4=mysqli_query($con, $sql4);
-        $row4=mysqli_fetch_assoc($r4);
-        $SName=$row4['SportName'];
-
-        $table="Teams";
-        $on='Team_ID';
+        // $SID=$row2['SportsID'];
+        $table='schedule';
+        $on='schedule';
 
         echo '
         <tr>
-        <th>'.$TID.'</th>
-        <td>'.$TName.'</td>
-        <td><strong>'.$CID.':</strong> '.$CName.'</td>
-        <td><strong>'.$EID.':</strong> '.$EName.'</td>
-        <td><strong>'.$SID.':</strong> '.$SName.'</td>
-        
+        <th>'.$SID.'</th>
+        <td>'.$TID.'</td>
+        <td>'.$VID.'</td>
+        <td>'.$DID.'</td>
+        <td>'.$TTID.'</td>
         <td>
-        <button type="button" class="btn btn-primary w-10"><a class="text-light" href="./updatesportsevents.php?updateID='.$EID.'">Edit</a> </button>
-        <button type="button" class="btn btn-danger"><a class="text-light" href="./deleteTeam.php?delID='.$TID.'&table='.$table.'&on='.$on.'">Delete</a> </button>
+        <button type="button" class="btn btn-primary w-10"><a class="text-light" href="./updateschedule.php?updateID='.$SID.'">Edit</a> </button>
+        <button type="button" class="btn btn-danger"><a class="text-light" href="./deleteschedule.php?delID='.$SID.'&table='.$table.'&on='.$on.'">Delete</a> </button>
 
         </td>
       </tr>
