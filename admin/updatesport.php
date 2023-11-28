@@ -82,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
           <label>Sport ID</label>
           <input type="text" placeholder="Enter Sport ID" name="SportID" value=<?php echo $EID ?> required/>
         </div>
+        
           <div class="input-box">
             <label>Sport Name</label>
             <input type="text" placeholder="Sport Name" name="SportName" value="<?php echo $EName ?>" required />

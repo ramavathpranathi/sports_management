@@ -22,6 +22,7 @@ $EDesc=$row['EquipmentDescription'];
 $Quantity=$row['Quantity'];
 $AQuantity=$row['AvailableQuantity'];
 $CID=$row['ClubID'];
+
 $sql2='select ClubName from CLubs where ClubID='.$CID.'';
 $r=mysqli_query($con, $sql2);
 $row2=mysqli_fetch_assoc($r);

@@ -122,8 +122,8 @@ if ($_SESSION['role'] !== 'admin') {
             <td>'.$QID.'</td>
             <td>'.$CID.'</td>
             <td>
-            <button type="button" class="btn btn-primary"><a class="text-light" href="./updateStudent.php?updateID='.$SID.'">Update</a> </button>
-            <button type="button" class="btn btn-danger"><a class="text-light" href="./deleteadmin.php?delID='.$SID.'&table='.$table.'&on='.$on.'">Delete</a> </button>
+            <button type="button" class="btn btn-primary"><a class="text-light" href="./updaterequest.php?updateID='.$SID.'">Update</a> </button>
+            <button type="button" class="btn btn-danger"><a class="text-light" href="./deleterequest.php?delID='.$SID.'&table='.$table.'&on='.$on.'">Delete</a> </button>
                 </td>
           </tr>
             ';
