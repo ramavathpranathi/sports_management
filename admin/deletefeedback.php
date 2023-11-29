@@ -4,50 +4,28 @@ session_start();
 
 if (!isset($_SESSION['username'])) {
     header('location:login.php');
-    exit();
 }
-
-$username = $_SESSION['username'];
 
 if ($_SESSION['role'] !== 'admin') {
-    header('location:../user/home.php');
+    // If the user is not an admin, redirect them to a restricted access page or show an error message
+    header('location:../user/home.php'); // Replace 'restricted.php' with the appropriate page
     exit();
 }
 
-if (isset($_GET['delID'])) {
-    // $id = $_GET['delID'];
-    // // $table = $_GET['table'];
-    
-    // if (isset($_GET['on'])) {
-    //     $on = $_GET['on'];
-    // } else {
-    //     // Handle the case when 'on' is not set, for example, redirect or show an error message.
-    //     // For now, I'll set a default value as an example.
-    //     $on = 'id'; // Replace with your actual default value or handle it appropriately.
-    // }
-    
-    // $sql = "DELETE FROM feedback WHERE `$on` = '$id'";
-    // $result = mysqli_query($con, $sql);
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['delID'])) {
+    $id = $_GET['delID'];
 
-    // if ($result) {
-    //     header('location:' . $table . '.php');
-    //     exit();
-    // } else {
-    //     die(mysqli_error($con));
-    // }
-    $id=$_GET['delID'];
-    $table=$_GET['table'];
-    $on=$_GET['on'];
-    $sql="delete from $table where $on=$id";
-    $result=mysqli_query($con, $sql);
-    if ($result){
-        header('location:'.$table.'.php');
+    $sql = "DELETE FROM Feedback WHERE StudentID = $id";
+    $result = mysqli_query($con, $sql);
+
+    if ($result) {
+        echo "Feedback deleted successfully.";
+    } else {
+        echo "Error deleting feedback: " . mysqli_error($con);
     }
-    else{
-        die(mysqli_error($con));
-    }
-    
-    header('location:SportsEvents.php');
-    
 }
+
+// Redirect to the feedback page after deleting
+header('location:Feedback.php');
+exit();
 ?>

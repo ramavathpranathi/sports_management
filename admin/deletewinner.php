@@ -2,10 +2,10 @@
 include 'connect.php';
 session_start();
 if (!isset($_SESSION['username'])) {
-    header('location:login.php');
+    header('location:login.php'); 
 }
 $username = $_SESSION['username'];
-
+ 
 if ($_SESSION['role'] !== 'admin') {
     // If the user is not an admin, redirect them to a restricted access page or show an error message
     header('location:../user/home.php'); // Replace 'restricted.php' with the appropriate page

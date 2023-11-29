@@ -72,10 +72,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="text" placeholder="Captain ID" name="CaptainID" value=<?php echo $captainID ?> required/>
         </div>
 
-        <div class="input-box">
+        <!-- <div class="input-box">
             <label>Points</label>
             <input type="text" placeholder="Points" name="Points" value=<?php echo $points ?> required/>
-        </div>
+        </div> -->
 
         <div class="input-box">
             <label>EventID</label>

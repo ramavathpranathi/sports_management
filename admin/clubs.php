@@ -12,7 +12,7 @@ if ($_SESSION['role'] !== 'admin') {
 }
 
 ?>
-
+ 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -106,7 +106,7 @@ if ($_SESSION['role'] !== 'admin') {
         echo '
         <h4>Club Coordinator: '.$fName.' '.$lName.'</h4>
         <p>'.$des.'</p>
-        <button type="button" class="btn btn-primary w-10"><a class="text-light" href="./updateClub.php?updateID='.$id.'">Edit</a> </button>
+        <button type="button" class="btn btn-primary w-10"><a class="text-light" href="./updateClub.php?updateID='.$id.'">update</a> </button>
         <button type="button" class="btn btn-danger"><a class="text-light" href="./deleteadmin.php?delID='.$id.'&table='.$table.'&on='.$on.'">Delete Club</a> </button>
 
         ';

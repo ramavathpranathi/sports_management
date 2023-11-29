@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             echo "Data Inserted";
             header('location:clubs.php');
         }
-        else{
+        else{ 
             die(mysqli_error($con));
         } 
         }

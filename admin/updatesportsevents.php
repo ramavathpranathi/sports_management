@@ -17,7 +17,7 @@ $result=mysqli_query($con, $sql);
 $row=mysqli_fetch_assoc($result);
 
 $EID=$row['EventID'];
-$EName=$row['EventName'];
+$EName=$row['EventName']; 
 $EDesc=$row['EventDate'];
 $Quantity=$row['Location'];
 $AQuantity=$row['Description'];

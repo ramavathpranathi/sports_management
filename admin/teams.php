@@ -135,12 +135,12 @@ if ($_SESSION['role'] !== 'admin') {
         <td><strong>'.$SID.':</strong> '.$SName.'</td>
         
         <td>
-        <button type="button" class="btn btn-primary w-10"><a class="text-light" href="./updatesportsevents.php?updateID='.$EID.'">Edit</a> </button>
+        <button type="button" class="btn btn-primary w-10"><a class="text-light" href="./updatesTeam.php?updateID='.$EID.'">Edit</a> </button>
         <button type="button" class="btn btn-danger"><a class="text-light" href="./deleteTeam.php?delID='.$TID.'&table='.$table.'&on='.$on.'">Delete</a> </button>
 
         </td>
       </tr>
-        ';
+        '; 
 
     }
 }

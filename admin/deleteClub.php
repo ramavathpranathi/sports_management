@@ -4,7 +4,6 @@ session_start();
 
 if (!isset($_SESSION['username'])) {
     header('location:login.php');
-    exit();
 }
 
 if ($_SESSION['role'] !== 'admin') {
@@ -30,12 +29,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Include necessary meta tags and stylesheets -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Club</title>
+    <link rel="stylesheet" href="../css/signup.css" />
 </head>
 <body>
     <section class="container">
         <header>Delete Club</header>
-        <form method="post" action="deleteClub.php" class="form">
+        <form method="post" action="delete_club.php" class="form">
             <!-- Add an input field for ClubID -->
             <input type="text" placeholder="Enter Club ID" name="ClubID" required />
 

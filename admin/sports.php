@@ -114,7 +114,7 @@ if ($_SESSION['role'] !== 'admin') {
         <td>'.$Aquantity.'</td>
         <td><strong>'.$CID.':</strong> '.$CName.'</td>
         <td>
-        <button type="button" class="btn btn-primary w-10"><a class="text-light" href="./updatesports.php?updateID='.$EID.'">Edit</a> </button>
+        <button type="button" class="btn btn-primary w-10"><a class="text-light" href="./updatesport.php?updateID='.$EID.'">Edit</a> </button>
         <button type="button" class="btn btn-danger"><a class="text-light" href="./deleteadmin.php?delID='.$EID.'&table='.$table.'&on='.$on.'">Delete</a> </button>
 
         </td>
