@@ -6,112 +6,51 @@ if(!isset($_SESSION['username'])){
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-  include 'connect.php';
-  
-//   $SID=$_POST['StudentID'];
-//   echo 'try '. $_POST['StudentID'];
-//  // $password=$_POST['PasswordHash'];
-//   $fName=$_POST['FirstName'];
-//   $lName=$_POST['LastName'];
-//   $DOB=$_POST['DateOfBirth'];
-//   $email=$_POST['Email'];
-//   $phone=$_POST['Phone'];
-//   $CID=$_POST['clubID'];
-     $SID=$_POST['SportsID'];
-     $EID=$_POST['EventID'];
-     $T1=$_POST['Team1'];
-     $T2=$_POST['Team2'];
+    include 'connect.php';
+    $SID = $_POST['SportsID'];
+    $T1 = $_POST['Team1'];
 
-  $sql = "select * from search where SportsID='$SID'";
-  $result=mysqli_query($con, $sql);
-  if ($result){
-      $n=mysqli_num_rows($result);
-      if ($n>0){
-          echo 'Already account exists';
-      }
-      else{
-      $sql = "insert into Search(SportsID, EventID, Team1, Team2) values('$SID', '$EID', '$T1', '$T2')";
-      $result=mysqli_query($con, $sql);
-      if($result){
-          // echo "Data Inserted";
-          header('location:registration.php');
-      }
-      else{
-          die(mysqli_error($con));
-      } 
-      }
-  }
-
+    $sql = "SELECT * FROM schedule WHERE SportID='$SID' AND TeamID='$T1'";
+    $result = mysqli_query($con, $sql);
+    
+    if ($result){
+        $n = mysqli_num_rows($result);
+        if ($n > 0){
+            $_SESSION['schedule_data'] = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            header('location: scheduleResult.php');
+            exit();
+        } else {
+            echo 'No schedule details found.';
+        }
+    }
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="UTF-8">
-        <title>ScheduleDetails</title>
-        <link rel="stylesheet" href="../css/pranu.css">
-        <meta name="viewport"content="width=device,initial-scale=1.0">
-
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>ScheduleDetails</title>
+    <link rel="stylesheet" href="../css/pranu.css">
+    <meta name="viewport"content="width=device,initial-scale=1.0">
+</head>
 
 <body>
-    <div class="container">
-        <div class="title">ScheduleDetails</div>
-        <form action="registration.php" method="post">
-            <div class="user-details">
-
+<div class="container">
+    <div class="title">ScheduleDetails</div>
+    <form action="scheduleResult.php" method="post">
+        <div class="user-details">
             <div class="input-box">
-                  <spam class="details">SportsID</spam>
-                  <input type="text" placeholder="Enter your id"name="StudentID"required>  
-                </div> 
-                <div class="input-box">
-                    <spam class="details">EventID</spam>
-                    <input type="text" placeholder="Enter your EventID"name='EventID'required>  
-                  </div> 
-                <div class="input-box">
-                  <spam class="details">Team 1</spam>
-                  <input type="text" placeholder="Enter your first team  name"name="Team 1"required>  
-                </div>
-                
-                  <div class="input-box">
-                    <spam class="details">Team 2</spam>
-                    <input type="text" placeholder="Enter your secound team name" name="Team 2" required>  
-                  </div>
-                  <div class="input-box">
-                    <spam class="details">ScheduleDetails</spam>
-                    <input type="text" placeholder=""required>  
-                  </div>
-                  <!-- <div class="input-box">
-                    <spam class="details">DateOfBirth</spam>
-                    <input type="text" pattern="\d{4}-\d{2}-\d{2}" placeholder="yyyy-mm-dd" name="DateOfBirth" required />
-                  </div> -->
-                  
-                  <!-- <div class="input-box">
-                    <spam class="details">Batch</spam>
-                    <input type="text" placeholder="Enter your batch"required>  
-                  </div> -->
-                  <!-- <div class="input-box">
-                    <spam class="details">Email</spam>
-                    <input type="text" placeholder="Enter your Email"name="Email"required>  
-                  </div>
-                  <div class="input-box">
-                    <spam class="details">Phone</spam>
-                    <input type="text" placeholder="phone number " name="Phone"required>  
-                  </div>
-                  <div class="input-box">
-                    <spam class="details">ClubID</spam>
-                    <input type="text" placeholder="Club id " name='clubID'required>  
-                  </div> -->
-                  <!-- <div class="button">
-                    <input type="submit" value="Register" >
-                  </div> -->
-                  <button>Submit</button>
-
+                <span class="details">SportsID</span>
+                <input type="text" placeholder="Enter Sports ID" name="SportsID" required>  
+            </div> 
+            <div class="input-box">
+                <span class="details">Team ID</span>
+                <input type="number" placeholder="Enter Team ID" name="Team1" required>  
             </div>
-        </form>
-      
-
-    </div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>

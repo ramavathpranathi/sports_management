@@ -16,7 +16,7 @@ if ($_SESSION['role'] !== 'admin') {
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -77,13 +77,14 @@ if ($_SESSION['role'] !== 'admin') {
   </div>
 </nav>
 <div class="container">
-<button type="button" class="btn btn-primary mt-5 ml-2"><a class="text-light" href="./addsport.php"> Add Schedule</a> </button>
+<button type="button" class="btn btn-primary mt-5 ml-2"><a class="text-light" href="./addschedule.php"> Add Schedule</a> </button>
 </div>
 <table class="table container table-bordered table-hover mt-3">
   <thead>
     <tr>
       <th scope="col">SportID</th>
       <th scope="col">TeamID</th>
+      <!-- <th scope="col">Team Name</th> -->
       <th scope="col">Venue</th>
       <th scope="col">Date</th>
       <th scope="col">Time</th>
@@ -98,6 +99,7 @@ if ($_SESSION['role'] !== 'admin') {
     while($row=mysqli_fetch_assoc($result)){
         $SID=$row["SportID"];
         $TID=$row['TeamID'];
+
         $VID=$row['Venue'];
         $DID=$row['Date'];
         $TTID=$row['Time'];

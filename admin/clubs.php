@@ -8,7 +8,7 @@ if(!isset($_SESSION['username'])){
 if ($_SESSION['role'] !== 'admin') {
     // If the user is not an admin, redirect them to a restricted access page or show an error message
     header('location:../user/home.php'); // Replace 'restricted.php' with the appropriate page
-    exit();
+    exit(); 
 }
 
 ?>
@@ -107,7 +107,7 @@ if ($_SESSION['role'] !== 'admin') {
         <h4>Club Coordinator: '.$fName.' '.$lName.'</h4>
         <p>'.$des.'</p>
         <button type="button" class="btn btn-primary w-10"><a class="text-light" href="./updateClub.php?updateID='.$id.'">update</a> </button>
-        <button type="button" class="btn btn-danger"><a class="text-light" href="./deleteadmin.php?delID='.$id.'&table='.$table.'&on='.$on.'">Delete Club</a> </button>
+        <button type="button" class="btn btn-danger"><a class="text-light" href="./deleteClub.php?delID='.$id.'&table='.$table.'&on='.$on.'">Delete Club</a> </button>
 
         ';
       

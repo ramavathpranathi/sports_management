@@ -26,7 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
           echo 'Already account exists';
       }
       else{
-      $sql = "insert into register(StudentID, FirstName, LastName, DateOfBirth, Email, Phone,clubID) values('$SID', '$fName', '$lName', '$DOB' ,'$email', '$phone', '$CID')";
+        $sql = "INSERT INTO register (StudentID, FirstName, LastName, DateOfBirth, Email, Phone, clubID)
+        SELECT '$SID', '$fName', '$lName', '$DOB', '$email', '$phone', '$CID'
+        FROM clubs
+        WHERE ClubID = '$CID'";
+
+      // $sql = "insert into register(StudentID, FirstName, LastName, DateOfBirth, Email, Phone,clubID) values('$SID', '$fName', '$lName', '$DOB' ,'$email', '$phone', '$CID')";
       $result=mysqli_query($con, $sql);
       if($result){
           // echo "Data Inserted";

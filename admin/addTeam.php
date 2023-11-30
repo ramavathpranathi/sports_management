@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     if ($result){
         $n=mysqli_num_rows($result);
         if ($n>0){
-            echo 'Club Already exists';
+            echo 'Team Already exists';
         }
         else{
           

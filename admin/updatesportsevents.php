@@ -83,11 +83,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         
         <div class="column">
         <div class="input-box">
-          <label>Equipment ID</label>
+          <label>Event ID</label>
           <input type="text" placeholder="Enter Event ID" name="EventID" value=<?php echo $EID ?> required />
         </div>
           <div class="input-box">
-            <label>Equipment Name</label>
+            <label>Event Name</label>
             <input type="text" placeholder="Event Name" name="EventName" value="<?php echo $EName ?>" required />
           </div>
         
@@ -95,18 +95,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         <div class="column">
         <div class="input-box">
             <label>Date</label>
-            <input type="text" pattern="\d{4}-\d{2}-\d{2}" placeholder="Event Date" name="EventDate" value="<?php echo $EDesc ?>" required />
+            <input type="date" pattern="\d{4}-\d{2}-\d{2}" placeholder="Event Date" name="EventDate" value="<?php echo $EDesc ?>" required />
           </div>
           <div class="input-box">
             <label>Venue</label>
-            <input type="text" placeholder="Venue" name="Location" value="<?php echo $Quantity ?>" required />
+            <input type="venue" placeholder="Venue" name="Location" value="<?php echo $Quantity ?>" required />
           </div>
           </div>
         
           
           <div class="input-box">
-            <label>Available Quantity</label>
-            <input type="text" placeholder="Description" name="Description" value="<?php echo $AQuantity ?>" required />
+            <label>Time</label>
+            <input type="Time" placeholder="Description" name="Description" value="<?php echo $AQuantity ?>" required />
           </div>
         
         <div>

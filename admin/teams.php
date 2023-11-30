@@ -88,11 +88,11 @@ if ($_SESSION['role'] !== 'admin') {
 <table class="table container table-bordered table-hover mt-3">
   <thead>
     <tr>
-      <th scope="col">#ID</th>
+      <th scope="col">Team ID</th>
       <th scope="col">Team Name</th>
       <th scope="col">Captain</th>
       <th scope="col">Event name</th>
-      <th scope="col">Game</th>
+      <th scope="col">Sports ID </th>
       <th scope="col">Operations</th>
     </tr>
   </thead>

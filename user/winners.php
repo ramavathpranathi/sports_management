@@ -123,7 +123,7 @@ if (!isset($_SESSION['username'])) {
                     $TID = $row["Team_ID"];
                     $TName=$row["TeamName"];
                     $CID = $row["CaptainID"];
-                    $PName = $row["points"];
+                    // $PName = $row["points"];
                     $EID = $row["EventID"];
                     $table="winners";
                     $on='winner_ID';
@@ -137,7 +137,7 @@ if (!isset($_SESSION['username'])) {
                         <td>' . $TID . '</td>
                         <td>' . $TName . '</td>
                         <td>' . $CID . '</td>
-                        <td>' . $PName . '</td>
+                       
                         <td>' . $EID . '</td>
                         <td>
                             <button type="button" class="btn btn-primary"><a class="text-light" href="./updatewinner.php?updateID=' . $WID . '">Update</a> </button>
@@ -158,7 +158,7 @@ if (!isset($_SESSION['username'])) {
                 <th scope="col">Team_ID</th>
                 <th scope="col">Team Name</th>
                 <th scope="col">CaptainID</th>
-                <th scope="col">points</th>
+               
                 <th scope="col">EventID</th>
                 <!-- <th scope="col">Operations</th> -->
             </tr>
@@ -173,7 +173,7 @@ if (!isset($_SESSION['username'])) {
                     $TID = $row["Team_ID"];
                     $TName=$row["TeamName"];
                     $CID = $row["CaptainID"];
-                    $PName = $row["points"];
+                    
                     $EID = $row["EventID"];
                     $table="winners";
                     $on='winner_ID';
@@ -187,7 +187,7 @@ if (!isset($_SESSION['username'])) {
                         <td>' . $TID . '</td>
                         <td>' . $TName . '</td>
                         <td>' . $CID . '</td>
-                        <td>' . $PName . '</td>
+                       
                         <td>' . $EID . '</td>
                        
                     </tr>

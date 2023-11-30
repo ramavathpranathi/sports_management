@@ -16,8 +16,14 @@ $SID = $SName = $AQuantity = $CID = ''; // Initialize variables
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['updateID'])) {
     $id = $_GET['updateID'];
-    $sql = "SELECT * FROM sports WHERE SportID = $id";
-    $result = mysqli_query($con, $sql);
+    $sql = "SELECT * FROM sports WHERE SportID = ?";
+    $stmt = mysqli_prepare($con, $sql);
+
+    mysqli_stmt_bind_param($stmt, 'i', $id);
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
 
     if ($result) {
         if ($row = mysqli_fetch_assoc($result)) {
@@ -26,10 +32,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['updateID'])) {
             $AQuantity = $row['Description'];
             $CID = $row['SportCordinator'];
 
-            $sql2 = "SELECT FirstName FROM students WHERE StudentID = $CID";
-            $r = mysqli_query($con, $sql2);
-            $row2 = mysqli_fetch_assoc($r);
-            $CName = $row2['FirstName'];
+            $sql2 = "SELECT FirstName FROM students WHERE StudentID = ?";
+            $stmt2 = mysqli_prepare($con, $sql2);
+
+            mysqli_stmt_bind_param($stmt2, 'i', $CID);
+
+            mysqli_stmt_execute($stmt2);
+
+            $result2 = mysqli_stmt_get_result($stmt2);
+
+            if ($row2 = mysqli_fetch_assoc($result2)) {
+                $CName = $row2['FirstName'];
+            } else {
+                echo "No data found for SportID: $id";
+                exit();
+            }
         } else {
             echo "No data found for SportID: $id";
             exit();
@@ -38,8 +55,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['updateID'])) {
         echo "Error fetching data: " . mysqli_error($con);
         exit();
     }
-}
 
+    mysqli_stmt_close($stmt);
+    mysqli_stmt_close($stmt2);
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $SID = $_POST['SportID'];
@@ -48,10 +67,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $CID = $_POST['SportCordinator'];
 
     $sql = "UPDATE sports
-            SET SportName = '$SName', Description = '$AQuantity', SportCordinator = $CID
-            WHERE SportID = $SID";
+            SET SportName=?, Description=?, SportCordinator=?
+            WHERE SportID = ?";
 
-    $result = mysqli_query($con, $sql);
+    $stmt = mysqli_prepare($con, $sql);
+
+    mysqli_stmt_bind_param($stmt, 'ssii', $SName, $AQuantity, $CID, $SID);
+
+    $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
         echo "Data Updated";
@@ -61,6 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Error updating data: " . mysqli_error($con);
         exit();
     }
+
+    mysqli_stmt_close($stmt);
 }
 ?>
 

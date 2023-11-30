@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         </div>
           <div class="input-box">
             <label>Event Name</label>
-            <input type="text" placeholder="Event Name" name="EventName" required />
+            <input type="text" placeholder="Event ID" name="Event ID" required />
           </div>
         
         </div>

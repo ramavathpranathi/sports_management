@@ -2,7 +2,7 @@
 include 'connect.php';
 session_start();
 
-if (!isset($_SESSION['username'])) {
+if(!isset($_SESSION['username'])){
     header('location:login.php');
 }
 
@@ -11,38 +11,21 @@ if ($_SESSION['role'] !== 'admin') {
     exit();
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
-    $CID = $_POST['ClubID'];
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['delID']) && isset($_GET['table']) && isset($_GET['on'])) {
+    $id = $_GET['delID'];
+    $table = $_GET['table'];
+    $on = $_GET['on'];
 
-    $sql = "DELETE FROM Clubs WHERE ClubID='$CID'";
+    $sql = "DELETE FROM $table WHERE $on='$id'";
     $result = mysqli_query($con, $sql);
 
     if ($result) {
-        echo "Data Deleted";
-        header('location:clubs.php');
+        header('location: clubs.php');
+        exit();
     } else {
-        die(mysqli_error($con));
+        echo 'Error deleting club.';
     }
+} else {
+    echo 'Invalid request.';
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Club</title>
-    <link rel="stylesheet" href="../css/signup.css" />
-</head>
-<body>
-    <section class="container">
-        <header>Delete Club</header>
-        <form method="post" action="delete_club.php" class="form">
-            <!-- Add an input field for ClubID -->
-            <input type="text" placeholder="Enter Club ID" name="ClubID" required />
-
-            <button type="submit" name="delete">Delete</button>
-        </form>
-    </section>
-</body>
-</html>
